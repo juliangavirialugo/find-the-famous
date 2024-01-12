@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Find the famous</title>
+        <link rel="shortcut icon" href="/img/trump.png" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                overflow: hidden;
+                background: linear-gradient(
+                    130deg,
+                    rgba(255, 189, 163, 1) 27%,
+                    rgba(204, 107, 142, 1) 52%
+                );
+                font-family: "IBM Plex Mono", monospace;
+            }
+
+            *:not(input) {
+                overflow: hidden;
+            }
+            body {
+                counter-reset: game;
+            }
+
+            .container {
+                background-image: url(/img/city.jpg);
+                background-size: 100%;
+                height: 100vh;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                z-index: 9;
+                position: relative;
+                max-width: 340px;
+                margin: 0 auto;
+                text-align: center;
+
+                & h1 {
+                    color: azure;
+                    font-size: 20px;
+                    font-weight: bold;
+                    position: relative;
+
+                    background: none;
+                    padding-top: 20px;
+                }
+                & p {
+                    background: none;
+                    font-weight: bold;
+                    color: azure;
+                }
+            }
+
+            .layer-1 {
+                margin: 0 auto;
+                position: absolute;
+                width: 80px;
+                height: 80px;
+                background-size: cover;
+                background-position: center;
+                background-image: url(/img/obama.png);
+                z-index: 10;
+                left: 150px;
+                top: 100px;
+                animation-name: loop-1;
+                animation-duration: 1.5s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 2, 1);
+                animation-iteration-count: infinite;
+            }
+            .layer-2 {
+                background-image: url(/img/mandela.png);
+                margin: 0 auto;
+                position: absolute;
+                width: 80px;
+                height: 80px;
+                background-size: cover;
+                background-position: center;
+                z-index: 20;
+                left: 80px;
+                top: 100px;
+                animation-name: loop-1;
+                animation-duration: 1.5s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 2, 1);
+                animation-delay: 0.7s;
+                animation-iteration-count: infinite;
+            }
+            .layer-3 {
+                margin: 0 auto;
+                position: absolute;
+                width: 150px;
+                height: 450px;
+                background-size: cover;
+                background-position: center;
+                background-image: url(/img/building.png);
+                z-index: 30;
+                left: 80px;
+                bottom: -45px;
+            }
+            .layer-4 {
+                margin: 0 auto;
+                position: absolute;
+                width: 100px;
+                height: 80px;
+                background-size: cover;
+                background-position: center;
+                background-image: url(/img/musk.png);
+                z-index: 40;
+                left: 10px;
+                top: 220px;
+                animation-name: loop-2;
+                animation-duration: 1.5s;
+                animation-timing-function: cubic-bezier(4, 0.82, 2, 1);
+                animation-iteration-count: infinite;
+            }
+            .layer-5 {
+                border-radius: 10px;
+                margin: 0 auto;
+                position: absolute;
+                width: 110px;
+                height: 450px;
+                background-size: cover;
+                background-position: bottom;
+                background-image: url(/img/casita.png);
+                z-index: 50;
+                left: 0;
+                bottom: -140px;
+                background-repeat: no-repeat;
+            }
+            .layer-6 {
+                margin: 0 auto;
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                background-size: cover;
+                background-position: center;
+                background-image: url(/img/trump.png);
+                z-index: 60;
+                left: 230px;
+                bottom: 130px;
+                background-repeat: no-repeat;
+                animation-name: loop-3;
+                animation-duration: 1.5s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.5, 1);
+                animation-iteration-count: infinite;
+            }
+
+            .layer-7 {
+                border-radius: 10px;
+                margin: 0 auto;
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                background-size: cover;
+                background-position: bottom;
+                background-image: url(/img/restos\ de\ casa.png);
+                z-index: 70;
+                left: 200px;
+                bottom: 0;
+                background-repeat: no-repeat;
+            }
+
+            .layer-8 {
+                margin: 0 auto;
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background-size: cover;
+                background-position: center;
+                background-image: url(/img/ronaldo.png);
+                z-index: 80;
+                left: 30px;
+                bottom: 30px;
+                background-repeat: no-repeat;
+                animation-name: loop-4;
+                animation-duration: 1.5s;
+                animation-timing-function: cubic-bezier(
+                    0.63,
+                    -0.41,
+                    0.75,
+                    0.53
+                );
+                animation-iteration-count: infinite;
+            }
+
+            .layer-9 {
+                margin: 0 auto;
+                position: absolute;
+                width: 80%;
+                height: 150px;
+                background-size: cover;
+                background-position: bottom;
+                background-image: url(/img/edificios.png);
+                z-index: 81;
+                left: 0;
+                bottom: 0;
+                background-repeat: no-repeat;
+            }
+
+            .container div input {
+                height: 100%;
+                width: 100%;
+                appearance: none;
+                background: none;
+            }
+            input:checked {
+                counter-increment: game;
+            }
+            p::after {
+                content: counter(game);
+            }
+
+            @media screen {
+            }
+            @keyframes loop-1 {
+                0% {
+                    top: 150px;
+                }
+
+                10% {
+                    top: 200px;
+                }
+            }
+            @keyframes loop-2 {
+                0% {
+                    top: 290px;
+                    left: 5px;
+                }
+
+                9% {
+                    top: 282px;
+                }
+
+                55% {
+                    top: 260px;
+                    left: 15px;
+                }
+
+                80% {
+                }
+            }
+            @keyframes loop-3 {
+                0% {
+                    bottom: -10px;
+                    right: 20px;
+                }
+
+                9% {
+                    bottom: 30px;
+                }
+
+                25% {
+                    bottom: 80px;
+                    right: 10px;
+                }
+            }
+            @keyframes loop-4 {
+                0% {
+                    bottom: -10px;
+                    left: 20px;
+                }
+
+                19% {
+                    bottom: 30px;
+                }
+
+                35% {
+                    bottom: 80px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section class="container">
+            <h1>FIND THE FAMOUS</h1>
+            <p>Score:</p>
+
+            <div class="layer-1">
+                <input type="checkbox" />
+            </div>
+            <div class="layer-2">
+                <input type="checkbox" />
+            </div>
+            <div class="layer-3"></div>
+            <div class="layer-4">
+                <input type="checkbox" />
+            </div>
+            <div class="layer-5"></div>
+            <div class="layer-6">
+                <input type="checkbox" />
+            </div>
+            <div class="layer-7"></div>
+            <div class="layer-8">
+                <input type="checkbox" />
+            </div>
+            <div class="layer-9"></div>
+        </section>
+    </body>
+</html>
